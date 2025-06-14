@@ -17,10 +17,10 @@
     content: "Pregunta " counter(pregunta);
 }
 
-.respuesta[data-valor = "true"]::after {
+.respuesta[data-valor="true"]::after {
     content: "Verdadero";
 }
 
-.respuesta[data-valor = "false"]::after {
+.respuesta[data-valor="false"]::after {
     content: "Falso";
 }

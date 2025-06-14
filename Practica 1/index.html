@@ -8,7 +8,7 @@
         <!-- Para poder usar el tipo de letra Droid Serif -->
          <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
         <!-- Función que permite alternar entre los distintos estilos de la página -->
-        <script type="text/javascript">
+        <script>
             function changeCSS(cssFile) {
                 var oldlink = document.getElementById("estilo");
                 var newlink = document.createElement("link")
@@ -39,7 +39,7 @@
             <!-- Cuestionario sobre París -->
             <section id="paris">
                 <h2>
-                    <img src="./img/paris.jpeg" alt="Imagen de París" />
+                    <img src="./img/paris.jpeg" alt="Imagen de París">
                     Cuestionario sobre París
                 </h2>
                 <div class="bloque">
@@ -65,7 +65,7 @@
             <!-- Cuestionario sobre Londres -->
             <section id="londres">
                 <h2>
-                    <img src="./img/londres.jpg" alt="Imagen de Londres" />
+                    <img src="./img/londres.jpg" alt="Imagen de Londres">
                     Cuestionario sobre Londres
                 </h2>
                 <div class="bloque">
@@ -82,11 +82,11 @@
                     </div>
             </section>
         </main>
-    </body>
 
-    <footer>
-        <span class="alumno">pdon1</span> | 
-        <a href="#" onclick="changeCSS('./css/normal.css');">Vista normal</a> |
-        <a href="#" onclick="changeCSS('./css/compact.css');">Vista compacta</a>
-    </footer>
+        <footer>
+            <span class="alumno">pdon1</span> | 
+            <a href="#" onclick="changeCSS('./css/normal.css');">Vista normal</a> |
+            <a href="#" onclick="changeCSS('./css/compact.css');">Vista compacta</a>
+        </footer>
+    </body>
 </html>
