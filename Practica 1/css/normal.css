@@ -12,3 +12,15 @@
     padding: 10px;
     box-shadow: 6px 6px 3px slategray;
 }
+
+.bloque::before {
+    content: "Pregunta " counter(pregunta);
+}
+
+.respuesta[data-valor = "true"]::after {
+    content: "Verdadero";
+}
+
+.respuesta[data-valor = "false"]::after {
+    content: "Falso";
+}

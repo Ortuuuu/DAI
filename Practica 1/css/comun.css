@@ -44,6 +44,7 @@ main {
 
 section {
     margin-top: 80px;
+    counter-reset: pregunta;
 }
 
 .pregunta {
@@ -76,4 +77,8 @@ footer {
 
 footer a {
     color: lightgray;
+}
+
+.bloque {
+    counter-increment: pregunta;
 }
