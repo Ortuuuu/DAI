@@ -7,18 +7,6 @@
         <link id="estilo" rel="stylesheet" type="text/css" href="./css/normal.css">
         <!-- Para poder usar el tipo de letra Droid Serif -->
          <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <!-- Función que permite alternar entre los distintos estilos de la página -->
-        <script>
-            function changeCSS(cssFile) {
-                var oldlink = document.getElementById("estilo");
-                var newlink = document.createElement("link")
-                newlink.setAttribute("rel", "stylesheet");
-                newlink.setAttribute("type", "text/css");
-                newlink.setAttribute("id", "estilo");
-                newlink.setAttribute("href", cssFile);
-                document.getElementsByTagName("head")[0].replaceChild(newlink, oldlink);
-            }
-        </script>
     </head>
 
     <body>
@@ -84,9 +72,7 @@
         </main>
 
         <footer>
-            <span class="alumno">pdon1</span> | 
-            <a href="#" onclick="changeCSS('./css/normal.css');">Vista normal</a> |
-            <a href="#" onclick="changeCSS('./css/compact.css');">Vista compacta</a>
+            <span class="alumno">pdon1</span>
         </footer>
     </body>
 </html>
