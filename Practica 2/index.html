@@ -6,14 +6,16 @@
         <!-- Para que la vista normal sea la que se muestre por defecto -->
         <link id="estilo" rel="stylesheet" type="text/css" href="./css/normal.css">
         <!-- Para poder usar el tipo de letra Droid Serif -->
-         <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+        <!-- Script para cargar aechivo con scripting js-->
+        <script src="./js/scripts.js"></script>
     </head>
 
     <body>
         <header>
             <h1>qÜestiona</h1>
             <p> 
-                qÜestiona es una aplicación web que permite gestionar cuestionarios sobre un determinado tema en el que las posibles respuestas son verdadero o falso. La aplicación se desarrolla como parte de las prácticas de la asignatura Desarrollo de Aplicaciones en Internet del Grado en Ingeniería Informática de la Universitat D'Alacant.
+                qÜestiona es una aplicación web que permite gestionar cuestionarios sobre un determinado tema en el que las posibles respuestas son verdadero o falso. La aplicación se desarrolla como parte de las prácticas de la asignatura Desarrollo de Aplicaciones en Internet del Grado en Ingeniería Informática de la Universitat d'Alacant.
             </p>
             <nav>
                 <ul>
@@ -24,6 +26,22 @@
         </header>
 
         <main>
+            <!-- Formulario de creación de nuevos cuestionarios -->
+            <div class="formulario" id="nuevoCuestionario">
+                <ul>
+                    <li>
+                        <label for="tema">Tema del cuestionario:</label>
+                        <input type="text" name="tema" id="tema" autofocus>
+                    </li>
+                    <li>
+                        <label for="imagen">URL de la imagen:</label>
+                        <input type="url" name="imagen" id="imagen">
+                    </li>
+                    <li>
+                        <input type="button" name="crea" value="Crear nuevo cuestionario">
+                    </li>
+                </ul>
+            </div>
             <!-- Cuestionario sobre París -->
             <section id="paris">
                 <h2>
