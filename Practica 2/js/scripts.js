@@ -1,3 +1,4 @@
+var contadorGlobal = 1;
 document.addEventListener("DOMContentLoaded", init, false);
 
 function init() {
@@ -12,9 +13,24 @@ function init() {
     for (let i = 0; i < secciones.length; i++) {
         addFormPregunta(secciones[i]);
     }
+
+    // Asociamos la función 'addCuestionario' como manejadora del evento 'click' del botón de añadir cuestionario
+    let botonAddCuestionario = document.querySelector("#nuevoCuestionario.formulario input[type='button']");
+    botonAddCuestionario.addEventListener("click", addCuestionario, false);
+    // Asociamos la funcion 'addCuestionario' al evento 'keydown' de los cuadros de texto del formulario
+    let inputsFormNuevoCuestionario = document.querySelectorAll("#nuevoCuestionario.formulario input[type='text'], #nuevoCuestionario.formulario input[type='url']");
+    for (let i = 0; i < inputsFormNuevoCuestionario.length; i++) {
+        inputsFormNuevoCuestionario[i].addEventListener('keydown', (event) => {
+            if(event.key == 'Enter') {
+                addCuestionario(event);
+            }
+        }, false);
+    }
 };
 
-// Funciones auxiliares para manipular el DOM
+
+
+// FUNCIONES AUXILIARES PARA MANIPULAR EL DOM //
 function insertAsLastChild(padre, nuevoHijo) {
     padre.append(nuevoHijo);
 };
@@ -44,7 +60,9 @@ function queryAncestorSelector (node,selector) {
     return (found)?parent:null;
 };
 
-// Funciones para eliminar preguntas
+
+
+// FUNCIONES PARA ELIMINAR PREGUNTAS //
 function addCruz(nodoBloque) {
     let cruz = document.createElement("div");
     cruz.className = "borra";
@@ -73,7 +91,9 @@ function borraPregunta(evento) {
     }
 }
 
-// Funciones para añadir formulario de inserción de preguntas
+
+
+// FUNCIONES PARA AÑADIR NUEVAS PREGUNTAS //
 function addFormPregunta(nodoSection) {
     // Creamos el div del formulario
     let divForm = document.createElement("div");
@@ -182,5 +202,59 @@ function addPregunta(evento) {
         if(respuestaPregunta.value == "falso") {
             formPadre.querySelector("input[type='radio'][value='verdadero']").checked = true;
         }
+    }
+}
+
+
+// FUNCIONES PARA AÑADIR NUEVOS CUESTIONARIOS //
+function addCuestionario(evento) {
+    let botonAddCuestionario = evento.target;
+    let formNuevoCuestionario = queryAncestorSelector(botonAddCuestionario, "#nuevoCuestionario.formulario");
+
+    let tituloCuestionario = formNuevoCuestionario.querySelector("input[type='text'][id='tema']")
+    let urlImagen = formNuevoCuestionario.querySelector("input[type='url'][id='imagen']");
+
+    if(tituloCuestionario.value == "" && urlImagen.value == "") {
+        window.alert("El título del cuestionario y la URL de la imagen no pueden estar vacíos.");
+    }
+    else if(tituloCuestionario.value == "") {
+        window.alert("El título del cuestionario no puede estar vacío");
+    }
+    else if(urlImagen.value == "") {
+         window.alert("La URL de la imagen no puede estar vacía.");
+    }
+    else {
+        // Creamos la seccion del cuestionario
+        let nuevaSeccion = document.createElement("section");
+        nuevaSeccion.id = "c" + contadorGlobal;
+
+        // Creamos el encabezado de la seccion
+        let encabezadoSeccion = document.createElement("h2");
+        encabezadoSeccion.textContent = "Cuestionario sobre " + tituloCuestionario.value;
+
+        let imagenSeccion = document.createElement("img");
+        imagenSeccion.setAttribute("src", urlImagen.value);
+        imagenSeccion.setAttribute("alt", "Imagen de " + tituloCuestionario.value);
+
+        // Anidamos los elementos 
+        nuevaSeccion.appendChild(encabezadoSeccion);
+        insertAsFirstChild(encabezadoSeccion, imagenSeccion);
+        addFormPregunta(nuevaSeccion);
+
+        // Lo insertamos en el documento y añadimos la entrada al indice
+        document.querySelector("main").appendChild(nuevaSeccion);
+
+        let entradaIndice = document.createElement("li");
+        let nuevoElemIndice = document.createElement("a");
+        nuevoElemIndice.setAttribute("href", "#c" + contadorGlobal);
+        nuevoElemIndice.className = "c" + contadorGlobal;
+        nuevoElemIndice.textContent = tituloCuestionario.value;
+        entradaIndice.appendChild(nuevoElemIndice);
+        document.querySelector("nav ul").appendChild(entradaIndice);
+
+        // Limpiamos el formulario e incrementamos el contador global
+        tituloCuestionario.value = "";
+        urlImagen.value = "";
+        contadorGlobal += 1;
     }
 }
