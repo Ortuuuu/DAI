@@ -146,3 +146,7 @@ footer a {
 .borra:hover {
     cursor: pointer;
 }
+
+label.radio {
+    width: 5em;
+}
